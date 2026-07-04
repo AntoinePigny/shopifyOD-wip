@@ -333,3 +333,48 @@
   cursor: pointer;
   color: rgb(var(--color-foreground));
 }
+.odevie-engagement {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.2rem;
+  position: relative;
+}
+@media screen and (min-width: 990px) {
+  .odevie-engagement {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.odevie-engagement__media img,
+.odevie-engagement__media-secondary img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.2rem;
+}
+.odevie-engagement__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2.4rem;
+}
+.odevie-engagement .odevie-icon-item {
+  flex-direction: row;
+  text-align: left;
+}
+.odevie-engagement .odevie-icon-item__icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  flex-shrink: 0;
+}
+.odevie-engagement__media-secondary {
+  display: none;
+}
+@media screen and (min-width: 990px) {
+  .odevie-engagement__media-secondary {
+    display: block;
+    position: absolute;
+    right: -2rem;
+    bottom: -2rem;
+    width: 18rem;
+    z-index: 1;
+  }
+}
