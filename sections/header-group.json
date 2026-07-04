@@ -23,7 +23,7 @@
       "type": "header",
       "settings": {
         "color_scheme": "scheme-1",
-        "logo_position": "middle-left",
+        "logo_position": "middle-center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
@@ -31,6 +31,7 @@
         "enable_country_selector": true,
         "enable_language_selector": true,
         "mobile_logo_position": "center",
+        "tagline": "la Puissance de la Mer",
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20

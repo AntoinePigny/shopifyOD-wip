@@ -160,7 +160,12 @@
                 }}
               </div>
             {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              <span class="header__heading-logo-text">
+                <span class="h2">{{ shop.name }}</span>
+                {%- if section.settings.tagline != blank -%}
+                  <span class="header__tagline">{{ section.settings.tagline | escape }}</span>
+                {%- endif -%}
+              </span>
             {%- endif -%}
           </a>
       {%- if request.page_type == 'index' -%}
@@ -200,7 +205,12 @@
                 }}
               </div>
             {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              <span class="header__heading-logo-text">
+                <span class="h2">{{ shop.name }}</span>
+                {%- if section.settings.tagline != blank -%}
+                  <span class="header__tagline">{{ section.settings.tagline | escape }}</span>
+                {%- endif -%}
+              </span>
             {%- endif -%}
           </a>
       {%- if request.page_type == 'index' -%}
@@ -492,7 +502,13 @@
       ],
       "default": "center",
       "label": "t:sections.header.settings.mobile_logo_position.label"
-    },    
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (shown under the shop name when no logo image is set)",
+      "default": "la Puissance de la Mer"
+    },
     {
       "type": "link_list",
       "id": "menu",
