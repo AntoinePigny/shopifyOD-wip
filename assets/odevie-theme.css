@@ -142,3 +142,36 @@
     top: 0.5rem;
   }
 }
+.odevie-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.odevie-trust-bar__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  flex: 1;
+}
+@media screen and (min-width: 750px) {
+  .odevie-trust-bar__items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.odevie-trust-bar .odevie-icon-item {
+  flex-direction: row;
+  text-align: left;
+}
+.odevie-trust-bar .odevie-icon-item__icon {
+  width: 3.2rem;
+  height: 3.2rem;
+  flex-shrink: 0;
+}
+.odevie-trust-bar__cta {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}

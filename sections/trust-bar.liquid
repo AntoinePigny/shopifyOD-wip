@@ -1,0 +1,80 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width odevie-trust-bar">
+    <div class="odevie-trust-bar__items">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'item' -%}
+          {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.label %}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.show_cta and section.settings.cta_label != blank -%}
+      <a href="{{ section.settings.cta_link }}" class="odevie-trust-bar__cta text-coral">{{ section.settings.cta_label | escape }} →</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_cta", "label": "Show call-to-action link", "default": false },
+    { "type": "text", "id": "cta_label", "label": "Call-to-action label", "default": "En savoir plus" },
+    { "type": "url", "id": "cta_link", "label": "Call-to-action link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 24 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "minerals.png", "label": "Minéraux" },
+            { "value": "digestion.png", "label": "Digestion" },
+            { "value": "hydration.png", "label": "Hydratation" },
+            { "value": "electrolyte.png", "label": "Électrolytes" },
+            { "value": "ecofriendly.png", "label": "Éco-responsable" },
+            { "value": "microfiltered.png", "label": "Microfiltré à froid" },
+            { "value": "noAdditives.png", "label": "Sans additif" },
+            { "value": "naturalPark.png", "label": "Parc naturel" },
+            { "value": "livraison.png", "label": "Livraison" },
+            { "value": "securePayment.png", "label": "Paiement sécurisé" },
+            { "value": "icon-return.svg", "label": "Satisfait ou remboursé" },
+            { "value": "icon-chat-bubble.svg", "label": "Service client" }
+          ],
+          "default": "noAdditives.png"
+        },
+        { "type": "image_picker", "id": "image", "label": "Photo (optional, overrides icon)" },
+        { "type": "text", "id": "label", "label": "Label", "default": "100% naturelle & non filtrée" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle & non filtrée" } },
+        { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée à froid" } },
+        { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Sans additif" } },
+        { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Conditionné en France" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
