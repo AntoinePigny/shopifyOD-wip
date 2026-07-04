@@ -1,0 +1,138 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width odevie-hero__grid">
+    <div class="odevie-hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="odevie-hero__heading h0">
+          {{ section.settings.heading }}<br>
+          {{ section.settings.subheading }}<br>
+          <span class="script-accent">{{ section.settings.script_text }}</span>
+        </h1>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="odevie-hero__description rte">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="odevie-hero__badges">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'badge' -%}
+              {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.label %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="odevie-hero__buttons">
+        {%- if section.settings.button_label_1 != blank -%}
+          <a href="{{ section.settings.button_link_1 }}" class="button button--primary">{{ section.settings.button_label_1 | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="button button--tertiary">{{ section.settings.button_label_2 | escape }} →</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="odevie-hero__media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1200 | image_tag: loading: 'eager', alt: section.settings.heading, class: 'odevie-hero__image' }}
+      {%- else -%}
+        <img
+          src="{{ 'hero.png' | asset_url }}"
+          alt="{{ section.settings.heading | escape }}"
+          width="862"
+          height="579"
+          loading="eager"
+          class="odevie-hero__image"
+        >
+      {%- endif -%}
+      <div class="odevie-hero__badge-overlay">
+        {%- if section.settings.badge_image != blank -%}
+          {{ section.settings.badge_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: 'Plasma Marin — 100% eau de mer' }}
+        {%- else -%}
+          <img src="{{ 'plasma.png' | asset_url }}" alt="Plasma Marin — 100% eau de mer" width="150" height="150" loading="lazy">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero ÓDEVIE",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "La solution venue du large" },
+    { "type": "text", "id": "heading", "label": "Heading line 1", "default": "ÓDEVIE" },
+    { "type": "text", "id": "subheading", "label": "Heading line 2", "default": "La solution" },
+    { "type": "text", "id": "script_text", "label": "Script accent line", "default": "venue du large" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Une eau de mer naturelle, riche en minéraux et oligo-éléments essentiels pour votre équilibre au quotidien.</p>" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "button_label_1", "label": "Button 1 label", "default": "Découvrir Odevie" },
+    { "type": "url", "id": "button_link_1", "label": "Button 1 link" },
+    { "type": "text", "id": "button_label_2", "label": "Button 2 label", "default": "En savoir plus" },
+    { "type": "url", "id": "button_link_2", "label": "Button 2 link" },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (defaults to the bundled ODEVIE bottle photo)" },
+    { "type": "image_picker", "id": "badge_image", "label": "Circular badge image (defaults to the Plasma Marin badge)" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "minerals.png", "label": "Minéraux" },
+            { "value": "digestion.png", "label": "Digestion" },
+            { "value": "hydration.png", "label": "Hydratation" },
+            { "value": "electrolyte.png", "label": "Électrolytes" },
+            { "value": "ecofriendly.png", "label": "Éco-responsable" },
+            { "value": "microfiltered.png", "label": "Microfiltré à froid" },
+            { "value": "noAdditives.png", "label": "Sans additif" },
+            { "value": "naturalPark.png", "label": "Parc naturel" },
+            { "value": "livraison.png", "label": "Livraison" },
+            { "value": "securePayment.png", "label": "Paiement sécurisé" },
+            { "value": "icon-return.svg", "label": "Satisfait ou remboursé" },
+            { "value": "icon-chat-bubble.svg", "label": "Service client" }
+          ],
+          "default": "minerals.png"
+        },
+        { "type": "image_picker", "id": "image", "label": "Photo (optional, overrides icon)" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Minéraux & oligo-éléments" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero ÓDEVIE",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "noAdditives.png", "label": "Eau de mer pure" } },
+        { "type": "badge", "settings": { "icon": "minerals.png", "label": "Minéraux & oligo-éléments" } },
+        { "type": "badge", "settings": { "icon": "hydration.png", "label": "Hydratation optimale" } },
+        { "type": "badge", "settings": { "icon": "electrolyte.png", "label": "Vitalité & bien-être" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
