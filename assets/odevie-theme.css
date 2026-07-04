@@ -49,10 +49,8 @@
 
 .header__tagline {
   display: block;
-  font-family: 'Roustel', cursive;
   font-size: 1.3rem;
   font-style: italic;
-  color: rgb(var(--color-coral));
   text-align: center;
   margin-top: -0.3rem;
 }
@@ -283,7 +281,7 @@
 .odevie-testimonials__card {
   flex: 0 0 clamp(26rem, 80vw, 34rem);
   scroll-snap-align: start;
-  background: rgb(var(--color-background));
+  background: #ffffff;
   border-radius: 1.2rem;
   padding: 2.4rem;
 }
