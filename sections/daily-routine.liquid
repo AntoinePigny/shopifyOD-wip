@@ -1,0 +1,84 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width odevie-daily-routine">
+    <div class="odevie-daily-routine__intro">
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <div class="odevie-daily-routine__items">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'routine_item' -%}
+          <div class="odevie-daily-routine__item" {{ block.shopify_attributes }}>
+            {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.title %}
+            {%- if block.settings.time_label != blank -%}
+              <span class="odevie-daily-routine__time eyebrow">{{ block.settings.time_label | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Daily routine",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "L'équilibre au quotidien" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Intégrez Odevie à chaque moment clé de votre journée.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "routine_item",
+      "name": "Routine item",
+      "settings": [
+        { "type": "text", "id": "time_label", "label": "Time label", "default": "MATIN" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Un shot revitalisant" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "minerals.png", "label": "Minéraux" },
+            { "value": "digestion.png", "label": "Digestion" },
+            { "value": "hydration.png", "label": "Hydratation" },
+            { "value": "electrolyte.png", "label": "Électrolytes" },
+            { "value": "ecofriendly.png", "label": "Éco-responsable" },
+            { "value": "microfiltered.png", "label": "Microfiltré à froid" },
+            { "value": "noAdditives.png", "label": "Sans additif" },
+            { "value": "naturalPark.png", "label": "Parc naturel" },
+            { "value": "livraison.png", "label": "Livraison" },
+            { "value": "securePayment.png", "label": "Paiement sécurisé" }
+          ],
+          "default": "hydration.png"
+        },
+        { "type": "image_picker", "id": "image", "label": "Photo (optional, overrides icon)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Daily routine",
+      "blocks": [
+        { "type": "routine_item", "settings": { "time_label": "MATIN", "title": "Un shot revitalisant", "icon": "hydration.png" } },
+        { "type": "routine_item", "settings": { "time_label": "APRÈS SPORT", "title": "Recharge minérale", "icon": "electrolyte.png" } },
+        { "type": "routine_item", "settings": { "time_label": "AVANT REPAS", "title": "Soutien digestif", "icon": "digestion.png" } },
+        { "type": "routine_item", "settings": { "time_label": "SOIR", "title": "Rééquilibrage", "icon": "minerals.png" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
