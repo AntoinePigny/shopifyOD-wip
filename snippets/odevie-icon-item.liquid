@@ -17,7 +17,7 @@
     {%- elsif icon contains '.svg' -%}
       {{ icon | inline_asset_content }}
     {%- else -%}
-      {{ icon | asset_url | image_tag: loading: 'lazy', alt: label, width: 48, height: 48 }}
+      <img src="{{ icon | asset_url }}" loading="lazy" alt="{{ label | escape }}" width="48" height="48">
     {%- endif -%}
   </span>
   {%- if label != blank -%}
