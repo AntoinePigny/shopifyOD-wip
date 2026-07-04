@@ -221,3 +221,20 @@
 .odevie-feature-card__content .rte {
   color: #ffffff;
 }
+
+.odevie-products-heading {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+.card-wrapper .card {
+  border-radius: 1.2rem;
+  overflow: hidden;
+}
+.card-wrapper .price {
+  color: rgb(var(--color-foreground));
+  font-weight: 700;
+}
+.card-wrapper .price del {
+  color: rgb(var(--color-coral));
+  opacity: 0.7;
+}
