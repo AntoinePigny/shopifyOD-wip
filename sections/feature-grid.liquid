@@ -1,0 +1,69 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width odevie-feature-grid">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'card' -%}
+        <a
+          {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% else %}href="#" tabindex="-1" aria-disabled="true"{% endif %}
+          class="odevie-feature-card"
+          {{ block.shopify_attributes }}
+        >
+          <div class="odevie-feature-card__media">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title }}
+            {%- endif -%}
+          </div>
+          <div class="odevie-feature-card__content">
+            {%- if block.settings.eyebrow != blank -%}<span class="eyebrow">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
+            {%- if block.settings.title != blank -%}<h3>{{ block.settings.title | escape }}</h3>{%- endif -%}
+            {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+          </div>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature grid",
+      "blocks": [
+        { "type": "card", "settings": { "title": "La force de la mer", "text": "<p>Captée au large, préservée dans sa pureté.</p>" } },
+        { "type": "card", "settings": { "title": "Nos solutions au quotidien", "text": "<p>Des formats adaptés à tous vos besoins.</p>" } },
+        { "type": "card", "settings": { "title": "Votre équilibre, notre priorité", "text": "<p>Hydratation, vitalité, bien-être au naturel.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
