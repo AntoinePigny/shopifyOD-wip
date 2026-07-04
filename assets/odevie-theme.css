@@ -1,0 +1,87 @@
+/* ÓDEVIE brand layer: self-hosted fonts + overrides on top of Dawn's base.css color-scheme/typography variables. */
+
+/* NOTE: @font-face rules that reference asset_url live in layout/theme.liquid's
+   {% style %} block (right before this stylesheet is enqueued), not here — plain
+   .css assets are never Liquid-parsed by Shopify, so `{{ "x.ttf" | asset_url }}`
+   would ship to the browser as literal, unresolved text if placed in this file. */
+
+:root {
+  --font-body-family: 'Gantari', sans-serif;
+  --font-body-style: normal;
+  --font-body-weight: 400;
+  --font-body-weight-bold: 700;
+  --font-heading-family: 'Gantari', sans-serif;
+  --font-heading-style: normal;
+  --font-heading-weight: 800;
+
+  --color-coral: 232, 115, 79;
+}
+
+.script-accent {
+  font-family: 'Roustel', cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(var(--color-coral));
+  letter-spacing: 0;
+}
+
+.text-coral {
+  color: rgb(var(--color-coral));
+}
+
+.eyebrow {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(var(--color-coral));
+  margin-bottom: 0.8rem;
+}
+
+.button,
+.shopify-challenge__button {
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.header__tagline {
+  display: block;
+  font-family: 'Roustel', cursive;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: rgb(var(--color-coral));
+  text-align: center;
+  margin-top: -0.3rem;
+}
+
+.odevie-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.odevie-icon-item__icon {
+  display: block;
+  width: 4.4rem;
+  height: 4.4rem;
+}
+
+.odevie-icon-item__icon img,
+.odevie-icon-item__icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  fill: currentColor;
+}
+
+.odevie-icon-item__label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 16rem;
+}

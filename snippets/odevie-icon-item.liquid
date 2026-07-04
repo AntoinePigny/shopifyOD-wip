@@ -1,0 +1,26 @@
+{% comment %}
+  Renders an icon-or-photo + label item, shared by the hero badges, trust-bar,
+  daily-routine, and engagement sections.
+
+  Accepts:
+  - icon: {String} bundled asset filename, e.g. "minerals.png" or "icon-return.svg"
+  - image: {Image} optional merchant-uploaded image; overrides `icon` when present
+  - label: {String} text shown under the icon
+
+  Usage:
+  {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.label %}
+{% endcomment %}
+<div class="odevie-icon-item">
+  <span class="odevie-icon-item__icon">
+    {%- if image != blank -%}
+      {{ image | image_url: width: 96 | image_tag: loading: 'lazy', alt: label, width: 48, height: 48 }}
+    {%- elsif icon contains '.svg' -%}
+      {{ icon | inline_asset_content }}
+    {%- else -%}
+      {{ icon | asset_url | image_tag: loading: 'lazy', alt: label, width: 48, height: 48 }}
+    {%- endif -%}
+  </span>
+  {%- if label != blank -%}
+    <span class="odevie-icon-item__label">{{ label }}</span>
+  {%- endif -%}
+</div>
