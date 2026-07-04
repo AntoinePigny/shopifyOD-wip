@@ -1,210 +1,159 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
+        "badge-1": { "type": "badge", "settings": { "icon": "noAdditives.png", "label": "Eau de mer pure" } },
+        "badge-2": { "type": "badge", "settings": { "icon": "minerals.png", "label": "Minéraux & oligo-éléments" } },
+        "badge-3": { "type": "badge", "settings": { "icon": "hydration.png", "label": "Hydratation optimale" } },
+        "badge-4": { "type": "badge", "settings": { "icon": "electrolyte.png", "label": "Vitalité & bien-être" } }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "eyebrow": "La solution venue du large",
+        "heading": "ÓDEVIE",
+        "subheading": "La solution",
+        "script_text": "venue du large",
+        "description": "<p>Une eau de mer naturelle, riche en minéraux et oligo-éléments essentiels pour votre équilibre au quotidien.</p>",
+        "button_label_1": "Découvrir Odevie",
+        "button_link_1": "shopify://collections/all",
+        "button_label_2": "En savoir plus",
+        "button_link_2": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "trust-bar-top": {
+      "type": "trust-bar",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        }
+        "item-1": { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle & non filtrée" } },
+        "item-2": { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée à froid" } },
+        "item-3": { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Sans additif" } },
+        "item-4": { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Conditionné en France" } }
       },
-      "block_order": [
-        "heading",
-        "text"
-      ],
+      "block_order": ["item-1", "item-2", "item-3", "item-4"],
+      "settings": {
+        "show_cta": true,
+        "cta_label": "En savoir plus",
+        "cta_link": "",
+        "color_scheme": "scheme-3",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "feature-grid": {
+      "type": "feature-grid",
+      "blocks": {
+        "card-1": { "type": "card", "settings": { "title": "La force de la mer", "text": "<p>Captée au large, préservée dans sa pureté.</p>", "link": "shopify://collections/all" } },
+        "card-2": { "type": "card", "settings": { "title": "Nos solutions au quotidien", "text": "<p>Des formats adaptés à tous vos besoins.</p>", "link": "shopify://collections/all" } },
+        "card-3": { "type": "card", "settings": { "title": "Votre équilibre, notre priorité", "text": "<p>Hydratation, vitalité, bien-être au naturel.</p>", "link": "shopify://collections/all" } }
+      },
+      "block_order": ["card-1", "card-2", "card-3"],
       "settings": {
         "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
+        "title": "Nos produits phares",
+        "heading_size": "h1",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
+        "color_scheme": "scheme-2",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
-    "collage": {
-      "type": "collage",
+    "daily-routine": {
+      "type": "daily-routine",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
+        "routine-1": { "type": "routine_item", "settings": { "time_label": "MATIN", "title": "Un shot revitalisant", "icon": "hydration.png" } },
+        "routine-2": { "type": "routine_item", "settings": { "time_label": "APRÈS SPORT", "title": "Recharge minérale", "icon": "electrolyte.png" } },
+        "routine-3": { "type": "routine_item", "settings": { "time_label": "AVANT REPAS", "title": "Soutien digestif", "icon": "digestion.png" } },
+        "routine-4": { "type": "routine_item", "settings": { "time_label": "SOIR", "title": "Rééquilibrage", "icon": "minerals.png" } }
       },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
+      "block_order": ["routine-1", "routine-2", "routine-3", "routine-4"],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
+        "heading": "L'équilibre au quotidien",
+        "text": "<p>Intégrez Odevie à chaque moment clé de votre journée.</p>",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "testimonials": {
+      "type": "testimonials",
       "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
+        "t-1": { "type": "testimonial", "settings": { "rating": 5, "quote": "Depuis que je bois Odevie tous les matins, je me sens plus en forme et mieux hydratée tout au long de la journée !", "name": "Sophie, 34 ans" } },
+        "t-2": { "type": "testimonial", "settings": { "rating": 5, "quote": "Une eau exceptionnelle, pure et riche en minéraux. Un vrai plus pour ma récupération sportive.", "name": "Marc, 42 ans" } },
+        "t-3": { "type": "testimonial", "settings": { "rating": 5, "quote": "Le format 5L est idéal pour toute la famille. Une qualité irréprochable et un goût naturel.", "name": "Clara, 29 ans" } }
       },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
+      "block_order": ["t-1", "t-2", "t-3"],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
+        "heading": "Ils en parlent mieux que nous",
+        "color_scheme": "scheme-3",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "engagement": {
+      "type": "engagement",
+      "blocks": {
+        "eng-1": { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle" } },
+        "eng-2": { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée" } },
+        "eng-3": { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Responsable" } },
+        "eng-4": { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Française" } }
+      },
+      "block_order": ["eng-1", "eng-2", "eng-3", "eng-4"],
+      "settings": {
+        "eyebrow": "Notre engagement",
+        "heading": "La puissance de la mer",
+        "text": "<p>Odevie puise sa force dans une eau de mer hypertonique préservée, puisée au large des côtes bretonnes. Notre mission : vous offrir le meilleur de la nature pour votre bien-être au quotidien.</p>",
+        "button_label": "Notre engagement",
         "button_link": "",
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-3",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "trust-bar-bottom": {
+      "type": "trust-bar",
+      "blocks": {
+        "item-1": { "type": "item", "settings": { "icon": "livraison.png", "label": "Livraison rapide sous 48/72h" } },
+        "item-2": { "type": "item", "settings": { "icon": "securePayment.png", "label": "Paiement sécurisé — 100% sécurisé" } },
+        "item-3": { "type": "item", "settings": { "icon": "icon-return.svg", "label": "Satisfait ou remboursé — 14 jours pour changer d'avis" } },
+        "item-4": { "type": "item", "settings": { "icon": "icon-chat-bubble.svg", "label": "Service client à votre écoute" } }
+      },
+      "block_order": ["item-1", "item-2", "item-3", "item-4"],
+      "settings": {
+        "show_cta": false,
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
+    "hero",
+    "trust-bar-top",
+    "feature-grid",
     "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "daily-routine",
+    "testimonials",
+    "engagement",
+    "trust-bar-bottom"
   ]
 }
