@@ -269,3 +269,67 @@
 .odevie-daily-routine__time {
   margin-bottom: 0;
 }
+.odevie-testimonials__heading {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+.odevie-testimonials__track {
+  display: flex;
+  gap: 2.4rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+.odevie-testimonials__card {
+  flex: 0 0 clamp(26rem, 80vw, 34rem);
+  scroll-snap-align: start;
+  background: rgb(var(--color-background));
+  border-radius: 1.2rem;
+  padding: 2.4rem;
+}
+.odevie-testimonials__stars {
+  display: flex;
+  gap: 0.2rem;
+  color: rgb(var(--color-coral));
+  margin-bottom: 1.2rem;
+}
+.odevie-testimonials__stars .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
+}
+.odevie-testimonials__star--empty {
+  opacity: 0.25;
+}
+.odevie-testimonials__quote {
+  font-style: italic;
+  margin: 0 0 1.6rem;
+}
+.odevie-testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+}
+.odevie-testimonials__avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.odevie-testimonials__nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+.odevie-testimonials__nav-btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.1rem solid rgb(var(--color-foreground));
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(var(--color-foreground));
+}

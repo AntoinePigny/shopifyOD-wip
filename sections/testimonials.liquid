@@ -1,0 +1,96 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="odevie-testimonials__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="odevie-testimonials__track" id="Testimonials-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          <div class="odevie-testimonials__card" {{ block.shopify_attributes }}>
+            <div class="odevie-testimonials__stars" aria-label="{{ block.settings.rating }} sur 5 étoiles">
+              {%- for i in (1..5) -%}
+                <span class="svg-wrapper{% if i > block.settings.rating %} odevie-testimonials__star--empty{% endif %}">{{ 'icon-star.svg' | inline_asset_content }}</span>
+              {%- endfor -%}
+            </div>
+            {%- if block.settings.quote != blank -%}
+              <p class="odevie-testimonials__quote">{{ block.settings.quote }}</p>
+            {%- endif -%}
+            <div class="odevie-testimonials__author">
+              {%- if block.settings.avatar != blank -%}
+                {{ block.settings.avatar | image_url: width: 96 | image_tag: loading: 'lazy', alt: block.settings.name, class: 'odevie-testimonials__avatar' }}
+              {%- endif -%}
+              {%- if block.settings.name != blank -%}
+                <span>{{ block.settings.name | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="odevie-testimonials__nav">
+      <button type="button" class="odevie-testimonials__nav-btn" data-direction="-1" aria-label="{{ 'general.slider.previous_slide' | t }}">‹</button>
+      <button type="button" class="odevie-testimonials__nav-btn" data-direction="1" aria-label="{{ 'general.slider.next_slide' | t }}">›</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var track = document.getElementById('Testimonials-{{ section.id }}');
+    if (!track) return;
+    var buttons = track.parentElement.querySelectorAll('.odevie-testimonials__nav-btn');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var amount = track.clientWidth * Number(button.dataset.direction);
+        track.scrollBy({ left: amount, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ils en parlent mieux que nous" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Rating", "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "text", "id": "name", "label": "Name" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Depuis que je bois Odevie tous les matins, je me sens plus en forme et mieux hydratée tout au long de la journée !", "name": "Sophie, 34 ans" } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Une eau exceptionnelle, pure et riche en minéraux. Un vrai plus pour ma récupération sportive.", "name": "Marc, 42 ans" } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Le format 5L est idéal pour toute la famille. Une qualité irréprochable et un goût naturel.", "name": "Clara, 29 ans" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
