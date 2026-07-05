@@ -1,0 +1,4 @@
+# Transient atomic-write files from editors/tools (e.g. foo.liquid.tmp.1234.abcd).
+# Without this, `shopify theme dev` tries to upload them and its preview gets
+# stuck on a "Failed to Upload Theme Files" page.
+*.tmp.*

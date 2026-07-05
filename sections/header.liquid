@@ -161,7 +161,7 @@
               </div>
             {%- else -%}
               <span class="header__heading-logo-text">
-                <span class="h2">{{ shop.name }}</span>
+                <img src="{{ 'OD.png' | asset_url }}" alt="{{ shop.name | escape }}" width="245" height="178" class="odevie-header__logo">
                 {%- if section.settings.tagline != blank -%}
                   <span class="header__tagline script-accent">{{ section.settings.tagline | escape }}</span>
                 {%- endif -%}
@@ -206,7 +206,7 @@
               </div>
             {%- else -%}
               <span class="header__heading-logo-text">
-                <span class="h2">{{ shop.name }}</span>
+                <img src="{{ 'OD.png' | asset_url }}" alt="{{ shop.name | escape }}" width="245" height="178" class="odevie-header__logo">
                 {%- if section.settings.tagline != blank -%}
                   <span class="header__tagline script-accent">{{ section.settings.tagline | escape }}</span>
                 {%- endif -%}

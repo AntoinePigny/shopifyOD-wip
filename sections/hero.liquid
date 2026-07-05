@@ -2,13 +2,37 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top }}px;
+    margin-top: calc(-1 * var(--header-height, 11.5rem));
+    padding-top: calc(var(--header-height, 11.5rem) + {{ section.settings.padding_top }}px);
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  <div class="page-width odevie-hero__grid">
+<div class="color-{{ section.settings.color_scheme }} gradient odevie-hero section-{{ section.id }}-padding">
+  <div class="odevie-hero__background" aria-hidden="true">
+    {%- if section.settings.hero_image != blank -%}
+      {{
+        section.settings.hero_image
+        | image_url: width: 2600
+        | image_tag:
+          loading: 'eager',
+          alt: section.settings.heading,
+          class: 'odevie-hero__image',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2000, 2600'
+      }}
+    {%- else -%}
+      <img
+        src="{{ 'hero.png' | asset_url }}"
+        alt="{{ section.settings.heading | escape }}"
+        width="862"
+        height="579"
+        loading="eager"
+        class="odevie-hero__image"
+      >
+    {%- endif -%}
+  </div>
+  <div class="page-width odevie-hero__inner">
     <div class="odevie-hero__content">
       {%- if section.settings.eyebrow != blank -%}
         <span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>
@@ -44,26 +68,12 @@
       </div>
     </div>
 
-    <div class="odevie-hero__media">
-      {%- if section.settings.hero_image != blank -%}
-        {{ section.settings.hero_image | image_url: width: 1200 | image_tag: loading: 'eager', alt: section.settings.heading, class: 'odevie-hero__image' }}
+    <div class="odevie-hero__badge-overlay">
+      {%- if section.settings.badge_image != blank -%}
+        {{ section.settings.badge_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: 'Plasma Marin — 100% eau de mer' }}
       {%- else -%}
-        <img
-          src="{{ 'hero.png' | asset_url }}"
-          alt="{{ section.settings.heading | escape }}"
-          width="862"
-          height="579"
-          loading="eager"
-          class="odevie-hero__image"
-        >
+        <img src="{{ 'plasma.png' | asset_url }}" alt="Plasma Marin — 100% eau de mer" width="150" height="150" loading="lazy">
       {%- endif -%}
-      <div class="odevie-hero__badge-overlay">
-        {%- if section.settings.badge_image != blank -%}
-          {{ section.settings.badge_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: 'Plasma Marin — 100% eau de mer' }}
-        {%- else -%}
-          <img src="{{ 'plasma.png' | asset_url }}" alt="Plasma Marin — 100% eau de mer" width="150" height="150" loading="lazy">
-        {%- endif -%}
-      </div>
     </div>
   </div>
 </div>

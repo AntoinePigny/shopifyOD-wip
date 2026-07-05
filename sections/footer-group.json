@@ -5,58 +5,73 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-brand": {
-          "type": "brand_information",
-          "settings": {
-            "show_social": true
-          }
-        },
-        "footer-0": {
-          "type": "link_list",
+        "col-boutique": {
+          "type": "link_column",
           "settings": {
             "heading": "Boutique",
-            "menu": "footer"
+            "label_1": "Tous nos produits",
+            "url_1": "shopify://collections/all",
+            "label_2": "Eau de mer",
+            "url_2": "/collections/eau-de-mer",
+            "label_3": "Compléments alimentaires",
+            "url_3": "/collections/complements-alimentaires",
+            "label_4": "Packs & offres",
+            "url_4": "/collections/packs-offres"
           }
         },
-        "footer-1": {
-          "type": "link_list",
+        "col-bienfaits": {
+          "type": "link_column",
           "settings": {
             "heading": "Nos bienfaits",
-            "menu": "footer"
+            "label_1": "Hydratation",
+            "url_1": "/pages/hydratation",
+            "label_2": "Énergie & vitalité",
+            "url_2": "/pages/energie-vitalite",
+            "label_3": "Récupération sportive",
+            "url_3": "/pages/recuperation-sportive",
+            "label_4": "Équilibre minéral",
+            "url_4": "/pages/equilibre-mineral"
           }
         },
-        "footer-2": {
-          "type": "link_list",
+        "col-a-propos": {
+          "type": "link_column",
           "settings": {
             "heading": "À propos",
-            "menu": "footer"
+            "label_1": "Notre histoire",
+            "url_1": "/pages/notre-histoire",
+            "label_2": "Notre mission",
+            "url_2": "/pages/notre-mission",
+            "label_3": "Nos engagements",
+            "url_3": "/pages/nos-engagements",
+            "label_4": "FAQ",
+            "url_4": "/pages/faq"
           }
         },
-        "footer-3": {
-          "type": "link_list",
+        "col-aide": {
+          "type": "link_column",
           "settings": {
-            "heading": "Aide et infos",
-            "menu": "footer"
+            "heading": "Aide & infos",
+            "label_1": "Livraison",
+            "url_1": "/pages/livraison",
+            "label_2": "Paiement",
+            "url_2": "/pages/paiement",
+            "label_3": "Retours & remboursements",
+            "url_3": "/pages/retours-remboursements",
+            "label_4": "Contact",
+            "url_4": "/pages/contact"
           }
         }
       },
       "block_order": [
-        "footer-brand",
-        "footer-0",
-        "footer-1",
-        "footer-2",
-        "footer-3"
+        "col-boutique",
+        "col-bienfaits",
+        "col-a-propos",
+        "col-aide"
       ],
       "settings": {
-        "color_scheme": "scheme-3",
-        "newsletter_enable": true,
-        "newsletter_heading": "Recevez nos actualités",
-        "show_social": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 48,
+        "tagline": "la Puissance de la Mer",
+        "color_scheme": "scheme-1",
+        "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36
       }

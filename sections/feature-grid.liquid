@@ -9,6 +9,7 @@
 
 <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   <div class="page-width odevie-feature-grid">
+    {%- assign default_card_images = 'mineraux.png,richesse.png,rituel.png' | split: ',' -%}
     {%- for block in section.blocks -%}
       {%- if block.type == 'card' -%}
         <a
@@ -16,16 +17,18 @@
           class="odevie-feature-card"
           {{ block.shopify_attributes }}
         >
-          <div class="odevie-feature-card__media">
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title }}
-            {%- endif -%}
-          </div>
-          <div class="odevie-feature-card__content">
-            {%- if block.settings.eyebrow != blank -%}<span class="eyebrow">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
-            {%- if block.settings.title != blank -%}<h3>{{ block.settings.title | escape }}</h3>{%- endif -%}
-            {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
-          </div>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title }}
+          {%- else -%}
+            {%- assign default_index = forloop.index0 | modulo: 3 -%}
+            <img
+              src="{{ default_card_images[default_index] | asset_url }}"
+              alt="{{ block.settings.title | escape }}"
+              width="1254"
+              height="1254"
+              loading="lazy"
+            >
+          {%- endif -%}
         </a>
       {%- endif -%}
     {%- endfor -%}
@@ -47,10 +50,8 @@
       "type": "card",
       "name": "Card",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "image_picker", "id": "image", "label": "Image (defaults to bundled ODEVIE visuals with text baked in)" },
+        { "type": "text", "id": "title", "label": "Accessible title (not displayed, used as image alt text)" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
@@ -59,9 +60,9 @@
     {
       "name": "Feature grid",
       "blocks": [
-        { "type": "card", "settings": { "title": "La force de la mer", "text": "<p>Captée au large, préservée dans sa pureté.</p>" } },
-        { "type": "card", "settings": { "title": "Nos solutions au quotidien", "text": "<p>Des formats adaptés à tous vos besoins.</p>" } },
-        { "type": "card", "settings": { "title": "Votre équilibre, notre priorité", "text": "<p>Hydratation, vitalité, bien-être au naturel.</p>" } }
+        { "type": "card", "settings": { "title": "Pourquoi sommes-nous si nombreux à manquer de minéraux ?" } },
+        { "type": "card", "settings": { "title": "La richesse naturelle de l'eau de mer, prouvée et préservée" } },
+        { "type": "card", "settings": { "title": "Un rituel simple dans votre quotidien" } }
       ]
     }
   ]

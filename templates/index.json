@@ -45,9 +45,9 @@
     "feature-grid": {
       "type": "feature-grid",
       "blocks": {
-        "card-1": { "type": "card", "settings": { "title": "La force de la mer", "text": "<p>Captée au large, préservée dans sa pureté.</p>", "link": "shopify://collections/all" } },
-        "card-2": { "type": "card", "settings": { "title": "Nos solutions au quotidien", "text": "<p>Des formats adaptés à tous vos besoins.</p>", "link": "shopify://collections/all" } },
-        "card-3": { "type": "card", "settings": { "title": "Votre équilibre, notre priorité", "text": "<p>Hydratation, vitalité, bien-être au naturel.</p>", "link": "shopify://collections/all" } }
+        "card-1": { "type": "card", "settings": { "title": "Pourquoi sommes-nous si nombreux à manquer de minéraux ?", "link": "shopify://collections/all" } },
+        "card-2": { "type": "card", "settings": { "title": "La richesse naturelle de l'eau de mer, prouvée et préservée", "link": "shopify://collections/all" } },
+        "card-3": { "type": "card", "settings": { "title": "Un rituel simple dans votre quotidien", "link": "shopify://collections/all" } }
       },
       "block_order": ["card-1", "card-2", "card-3"],
       "settings": {
@@ -112,17 +112,17 @@
     "engagement": {
       "type": "engagement",
       "blocks": {
-        "eng-1": { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle" } },
-        "eng-2": { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée" } },
-        "eng-3": { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Responsable" } },
-        "eng-4": { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Française" } }
+        "eng-1": { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle", "text": "Aucun traitement chimique, aucun additif." } },
+        "eng-2": { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée", "text": "Conditionnée à froid pour conserver tous ses bienfaits." } },
+        "eng-3": { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Responsable", "text": "Emballages recyclables et engagement durable." } },
+        "eng-4": { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Française", "text": "Conditionnée en Bretagne avec soin et passion." } }
       },
       "block_order": ["eng-1", "eng-2", "eng-3", "eng-4"],
       "settings": {
         "eyebrow": "Notre engagement",
         "heading": "La puissance de la mer",
-        "text": "<p>Odevie puise sa force dans une eau de mer hypertonique préservée, puisée au large des côtes bretonnes. Notre mission : vous offrir le meilleur de la nature pour votre bien-être au quotidien.</p>",
-        "button_label": "Notre engagement",
+        "text": "<p>Odevie puise sa force dans une eau de mer hypertonique préservée, puisée au large des côtes bretonnes.</p><p>Notre mission : vous offrir le meilleur de la nature pour votre bien-être au quotidien.</p>",
+        "button_label": "En savoir plus",
         "button_link": "",
         "color_scheme": "scheme-1",
         "padding_top": 48,

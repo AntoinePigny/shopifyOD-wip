@@ -9,13 +9,6 @@
 
 <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   <div class="page-width odevie-engagement">
-    <div class="odevie-engagement__media">
-      {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.heading }}
-      {%- else -%}
-        <img src="{{ 'rituel.png' | asset_url }}" alt="{{ section.settings.heading | escape }}" width="1254" height="1254" loading="lazy">
-      {%- endif -%}
-    </div>
     <div class="odevie-engagement__content">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow | escape }}</span>{%- endif -%}
       {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
@@ -23,19 +16,14 @@
       {%- if section.settings.button_label != blank -%}
         <a href="{{ section.settings.button_link }}" class="button button--secondary">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
-      <div class="odevie-engagement__items">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'item' -%}
-            {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.label %}
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
     </div>
-    {%- if section.settings.second_image != blank -%}
-      <div class="odevie-engagement__media-secondary">
-        {{ section.settings.second_image | image_url: width: 500 | image_tag: loading: 'lazy', alt: section.settings.heading }}
-      </div>
-    {%- endif -%}
+    <div class="odevie-engagement__items">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'item' -%}
+          {% render 'odevie-icon-item', icon: block.settings.icon, image: block.settings.image, label: block.settings.label, text: block.settings.text %}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 
@@ -48,11 +36,8 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Notre engagement" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "La puissance de la mer" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Odevie puise sa force dans une eau de mer hypertonique préservée, puisée au large des côtes bretonnes.</p>" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Notre engagement" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "En savoir plus" },
     { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "header", "content": "Images" },
-    { "type": "image_picker", "id": "image", "label": "Main image (defaults to the bundled ritual photo)" },
-    { "type": "image_picker", "id": "second_image", "label": "Secondary image" },
     { "type": "header", "content": "Colors" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
     { "type": "header", "content": "Padding" },
@@ -83,7 +68,8 @@
           "default": "noAdditives.png"
         },
         { "type": "image_picker", "id": "image", "label": "Photo (optional, overrides icon)" },
-        { "type": "text", "id": "label", "label": "Label", "default": "100% naturelle" }
+        { "type": "text", "id": "label", "label": "Label", "default": "100% naturelle" },
+        { "type": "text", "id": "text", "label": "Description" }
       ]
     }
   ],
@@ -91,10 +77,10 @@
     {
       "name": "Engagement",
       "blocks": [
-        { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle" } },
-        { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée" } },
-        { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Responsable" } },
-        { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Française" } }
+        { "type": "item", "settings": { "icon": "noAdditives.png", "label": "100% naturelle", "text": "Aucun traitement chimique, aucun additif." } },
+        { "type": "item", "settings": { "icon": "microfiltered.png", "label": "Préservée", "text": "Conditionnée à froid pour conserver tous ses bienfaits." } },
+        { "type": "item", "settings": { "icon": "ecofriendly.png", "label": "Responsable", "text": "Emballages recyclables et engagement durable." } },
+        { "type": "item", "settings": { "icon": "naturalPark.png", "label": "Française", "text": "Conditionnée en Bretagne avec soin et passion." } }
       ]
     }
   ]
