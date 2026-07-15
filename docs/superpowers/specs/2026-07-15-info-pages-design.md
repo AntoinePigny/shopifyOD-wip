@@ -16,7 +16,7 @@ Shopify stores theme-editor content per *template file*, not per page. One templ
 
 - **Content:** distinct per page, edited in the theme editor.
 - **Design source:** no mockup; match the existing ODEVIE homepage style (Gantari body, Roustel display, existing color schemes).
-- **Drop-down behavior:** independent open/close, several may be open at once, all closed on page load. No JavaScript — native `<details>`/`<summary>`.
+- **Drop-down behavior:** independent open/close, several may be open at once, all closed on page load. No JavaScript on the storefront — native `<details>`/`<summary>`; a small design-mode-only script (theme editor exclusively) auto-opens a drop-down when the merchant selects it or one of its blocks, and after editor re-renders.
 - **Row layout inside an open drop-down:** alternating text/image rows (layout B): odd rows image-right, even rows image-left on desktop; stacked text-then-image on mobile.
 - **Page top:** the page title (from the Shopify page object) renders above the drop-downs via the stock `main-page` section. Page body stays empty in admin.
 

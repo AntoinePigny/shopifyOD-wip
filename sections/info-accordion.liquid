@@ -57,6 +57,22 @@
   </div>
 </div>
 
+{%- if request.design_mode -%}
+  <script>
+    (() => {
+      const sectionId = '{{ section.id }}';
+      const openDetails = (event) => {
+        if (event.detail?.sectionId !== sectionId) return;
+        const details = document.getElementById(`Details-${sectionId}`);
+        if (details) details.open = true;
+      };
+      document.addEventListener('shopify:section:select', openDetails);
+      document.addEventListener('shopify:block:select', openDetails);
+      document.addEventListener('shopify:section:load', openDetails);
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Info drop-down",
