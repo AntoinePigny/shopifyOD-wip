@@ -45,9 +45,9 @@
     "feature-grid": {
       "type": "feature-grid",
       "blocks": {
-        "card-1": { "type": "card", "settings": { "title": "Pourquoi sommes-nous si nombreux à manquer de minéraux ?", "link": "shopify://collections/all" } },
-        "card-2": { "type": "card", "settings": { "title": "La richesse naturelle de l'eau de mer, prouvée et préservée", "link": "shopify://collections/all" } },
-        "card-3": { "type": "card", "settings": { "title": "Un rituel simple dans votre quotidien", "link": "shopify://collections/all" } }
+        "card-1": { "type": "card", "settings": { "title": "Pourquoi sommes-nous si nombreux à manquer de minéraux ?", "link": "/pages/mineraux" } },
+        "card-2": { "type": "card", "settings": { "title": "La richesse naturelle de l'eau de mer, prouvée et préservée", "link": "/pages/richesse" } },
+        "card-3": { "type": "card", "settings": { "title": "Un rituel simple dans votre quotidien", "link": "/pages/rituel" } }
       },
       "block_order": ["card-1", "card-2", "card-3"],
       "settings": {
