@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 16
+      }
+    },
+    "accordion-1": {
+      "type": "info-accordion",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } },
+        "row-2": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } }
+      },
+      "block_order": ["row-1", "row-2"],
+      "settings": {
+        "title": "Le rôle des minéraux",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "accordion-2": {
+      "type": "info-accordion",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } },
+        "row-2": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } }
+      },
+      "block_order": ["row-1", "row-2"],
+      "settings": {
+        "title": "Les signes d'un manque",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "accordion-3": {
+      "type": "info-accordion",
+      "blocks": {
+        "row-1": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } },
+        "row-2": { "type": "row", "settings": { "text": "<p>Ajoutez votre texte ici.</p>" } }
+      },
+      "block_order": ["row-1", "row-2"],
+      "settings": {
+        "title": "Comment se rééquilibrer",
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    }
+  },
+  "order": ["main", "accordion-1", "accordion-2", "accordion-3"]
+}
