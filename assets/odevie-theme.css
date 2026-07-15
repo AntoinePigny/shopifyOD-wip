@@ -586,3 +586,80 @@
 .odevie-footer__link:hover {
   text-decoration: underline;
 }
+
+/* Info accordion (info pages: one section instance = one drop-down).
+   base.css already styles summary + absolutely positions .icon-caret. */
+.odevie-info-accordion__details {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.odevie-info-accordion__summary {
+  padding: 1.6rem 3.5rem 1.6rem 0; /* right padding clears the caret from base.css */
+}
+
+.odevie-info-accordion__summary .icon-caret {
+  transition: transform 0.2s ease;
+}
+
+.odevie-info-accordion__details[open] > .odevie-info-accordion__summary .icon-caret {
+  transform: rotate(180deg);
+}
+
+.odevie-info-accordion__title {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+.odevie-info-accordion__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 0.8rem 0 2.4rem;
+}
+
+.odevie-info-accordion__row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.odevie-info-accordion__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.2rem;
+}
+
+.odevie-info-accordion__row--image-only .odevie-info-accordion__image img {
+  max-height: 42rem;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 750px) {
+  .odevie-info-accordion__title {
+    font-size: 3rem;
+  }
+
+  .odevie-info-accordion__row {
+    flex-direction: row;
+    align-items: center;
+    gap: 3.2rem;
+  }
+
+  /* Layout B: alternate image side by rendered row position
+     (all children of __content are rows, so :nth-child parity = row parity) */
+  .odevie-info-accordion__row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .odevie-info-accordion__text {
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+
+  .odevie-info-accordion__image {
+    flex: 1 1 40%;
+    min-width: 0;
+  }
+}

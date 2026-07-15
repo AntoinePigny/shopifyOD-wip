@@ -1,0 +1,92 @@
+{{ 'odevie-theme.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width odevie-info-accordion">
+    <details id="Details-{{ section.id }}" class="odevie-info-accordion__details">
+      <summary id="Summary-{{ section.id }}" class="odevie-info-accordion__summary">
+        <h2 class="odevie-info-accordion__title script-accent">
+          {%- if section.settings.title != blank -%}
+            {{ section.settings.title | escape }}
+          {%- else -%}
+            &nbsp;
+          {%- endif -%}
+        </h2>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div
+        class="odevie-info-accordion__content"
+        role="region"
+        aria-labelledby="Summary-{{ section.id }}"
+      >
+        {%- for block in section.blocks -%}
+          {%- if block.settings.text == blank and block.settings.image == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+          <div
+            class="odevie-info-accordion__row{% if block.settings.image == blank %} odevie-info-accordion__row--text-only{% endif %}{% if block.settings.text == blank %} odevie-info-accordion__row--image-only{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.text != blank -%}
+              <div class="odevie-info-accordion__text rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              {%- assign image_alt = block.settings.image.alt | default: section.settings.title -%}
+              <div class="odevie-info-accordion__image">
+                {{
+                  block.settings.image
+                  | image_url: width: 1500
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '375, 550, 750, 1100, 1500',
+                    sizes: '(min-width: 750px) 40vw, calc(100vw - 3rem)',
+                    alt: image_alt
+                }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </details>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Info drop-down",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Drop-down title", "default": "Titre de la rubrique" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 8 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 8 }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Paragraph", "default": "<p>Ajoutez votre texte ici.</p>" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info drop-down",
+      "blocks": [{ "type": "row" }, { "type": "row" }]
+    }
+  ]
+}
+{% endschema %}
